@@ -8,32 +8,28 @@ class Obstacle {
         this.color = color;
         this.x = x;
         this.y = y;
-        //this.speedX = 0;
-        //this.speedY = 0;
     }
     updateObst() {  
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     detectOnLeft() {
-        let obstacleLeft = this.x - ball.radius; 
-        if (ball.x > obstacleLeft && ball.y > this.y && ball.x < this.x) {
-            ball.x = obstacleLeft;
-            ball.vx = 0;
+        let obstacleLeft = this.x - goose.radius+2; 
+        if (goose.x > obstacleLeft && goose.y > this.y && goose.x < this.x) {
+            goose.x = obstacleLeft;
+            goose.vx = 0;
         }
     }
     detectOnTop() {
-        let obstacleBottom = this.y - ball.radius;
-        if (ball.y > obstacleBottom &&
-            ball.x > this.x && ball.x < this.x + this.width && 
-            ball.y < this.y) {
-            ball.y = obstacleBottom;
-            ball.vy = 0;
+        let obstacleBottom = this.y - goose.radius;
+        if (goose.y > obstacleBottom &&
+            goose.x > this.x && goose.x < this.x + this.width && 
+            goose.y < this.y) {
+            goose.y = obstacleBottom;
+            goose.vy = 0;
         }
     }        
-}
-
-  
+}  
 function updateObstacles() {
     for(let i = 0; i < obstacles.length; i++) {
         obstacles[i].x -= 1;

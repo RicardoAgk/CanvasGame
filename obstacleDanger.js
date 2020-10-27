@@ -1,6 +1,7 @@
-
 let framesDanger = 0;
 let obstaclesDanger = [];
+let lifeCounter = 3;
+
 
 class ObstacleDanger {
     constructor(width, height, color, x, y) {
@@ -9,57 +10,56 @@ class ObstacleDanger {
         this.color = color;
         this.x = x;
         this.y = y;
-        //this.speedX = 0;
-        //this.speedY = 0;
-    }
+        this.image = 'images/beetle-bug-2.png';
+    
+}
     updateDanger() {  
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        
+        const bugImg = new Image();
+        bugImg.src = this.image;
+        ctx.drawImage(bugImg, this.x, this.y, this.width, this.height);
+        let randomMove = Math.floor(Math.random()*10);
+        if(randomMove > 5){
+            this.y += 3
+        }else{
+            this.x -= 2
+        }     
     }
-    left() {
-        return this.x;
-    }
-    detectOnLeft() {
-        let obstacleLeft = this.x - ball.radius; 
-        if (ball.x > obstacleLeft && ball.y > this.y && ball.x < this.x) {
-            ball.x = obstacleLeft;
-            ball.vx = 0;
-            gameOver();
-          
-            
+    detectOnLeft(i) {
+        let obstacleLeft = this.x - goose.radius; 
+        if (goose.x > obstacleLeft && goose.y < this.height && goose.x > this.x) {
+            lifeCounter--;
+            obstaclesDanger.splice(i, 1)
         }   
     }
-    detectOnTop() {
-        let obstacleBottom = this.y - ball.radius;
-        if (ball.y > obstacleBottom &&
-            ball.x > this.x && ball.x < this.x + this.width && 
-            ball.y < this.y) {
-            ball.y = obstacleBottom;
-            ball.vy = 0;
-            gameOver();
-        
-            
+    detectOnTop(i) {
+        let obstacleBottom = this.y - goose.radius;
+        if (goose.y > obstacleBottom &&
+            goose.x > this.x && goose.x < this.x + this.width && 
+            goose.y < this.height) {
+            lifeCounter--;
+            obstaclesDanger.splice(i, 1)    
         }    
-    }     
-}
-
+    } 
+    /*clearObstacleDanger(){
+        obstaclesDanger.splice(i, 1)
+    }    */ 
+}    
+    
 function updateObstacleDanger() {
     for(let i = 0; i < obstaclesDanger.length; i++) {
         obstaclesDanger[i].x -= 1;
         obstaclesDanger[i].updateDanger();
-        obstaclesDanger[i].detectOnLeft();
-        obstaclesDanger[i].detectOnTop()
+        obstaclesDanger[i].detectOnLeft(i);
+        obstaclesDanger[i].detectOnTop(i)
+        //obstaclesDanger.splice(i,1);
     }
 
     framesDanger+=1;
     if (framesDanger % 500 === 0) {   
-        let minHeight = 20;
-        let maxHeight = 200;
-        let height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
+        
         
         obstaclesDanger.push(
-            new ObstacleDanger(70, 70, 'red',canvas.width, canvas.height - height));
+            new ObstacleDanger(70, 70, 'red',canvas.width, 0));
     }
   }
   
