@@ -1,3 +1,13 @@
+*{
+    margin: 0
+}
+
 #canvas{
     background-color: rgb(31, 173, 230);
+}
+
+#canvas2{
+    width: auto;
+    height: 600px;
+    background-color: rgb(161, 31, 179);
 }

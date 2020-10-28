@@ -13,7 +13,7 @@ class Goose {
  draw() {
     const gooseImg = new Image();
     gooseImg.src = this.img;
-    ctx.drawImage(gooseImg, this.x, this.y, 80, 120);
+    ctx.drawImage(gooseImg, this.x, this.y, 80, 80);
   }
   }
 
@@ -28,22 +28,22 @@ function hitBottom() {
     let rockBottom = canvas.height - (canvas.height/4);
     if (goose.y > rockBottom) {
         goose.y = rockBottom;
-        goose.vy = 0;
+        goose.vy = 0.5;
     }  
 }
 
 function hitLeft() {
-    let farLeft = 0 + goose.radius;
+    let farLeft = goose.radius;
     if (goose.x < farLeft) {
         goose.x = farLeft;
-        goose.xy = 0;
+        goose.xy = 0.5;
     }  
 }
 
 document.onkeydown = function(e) {
     switch(e.keyCode) {
         case 32:
-            goose.userPull = 2;
+            goose.userPull = 1.8;
             goose.img = 'images/goose-fly.png';
         break; 
         case 39:
