@@ -51,13 +51,14 @@ function checkGameOver(){
 }
 
 function checkWin(){
-    if(progress === 7){
+    if(progress === 1){
         displayProgress();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = '50px serif';
         ctx.fillStyle = 'white';
-        ctx.fillText(`yey`, 500, canvas.height / 4); 
-        ctx.fillText(`yey`, 500, canvas.height / 2);  
+        ctx.fillText(`Congrats`, 300, 150); 
+        ctx.fillText(`You have finished module 1`, 300, 250);         
+        ctx.fillText(`Let's have a beer?!`, 300, 450)
         stop()  
     }
 }

@@ -1,6 +1,6 @@
 let progress = 0;
     
-    function displayProgress(){
+    function  {
         let image = 'images/happy-goose.png'
         const happyGoose = new Image();
         happyGoose.src = image;

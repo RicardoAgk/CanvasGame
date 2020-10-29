@@ -32,7 +32,7 @@ class ObstacleDanger {
     
 function updateObstacleDanger() {
     for(let i = 0; i < obstaclesDanger.length; i++) {
-        obstaclesDanger[i].x -= 2;
+        obstaclesDanger[i].x -= 3.5;
         obstaclesDanger[i].updateDanger();
         obstaclesDanger[i].detectCollision(i);
     }

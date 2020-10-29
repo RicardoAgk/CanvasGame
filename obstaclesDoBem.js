@@ -52,7 +52,7 @@ class ObstacleDoBem {
 function updateObstacleDoBem() {
     changeImage()
     for(let i = 0; i < obstaclesDoBem.length; i++) {
-        obstaclesDoBem[i].x -= 1;
+        obstaclesDoBem[i].x -= 2;
         obstaclesDoBem[i].updateDoBem();
         obstaclesDoBem[i].detectCollision(i);
     }
