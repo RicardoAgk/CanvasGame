@@ -9,6 +9,7 @@
 
 #canvas2{
     width: auto;
+    display: flex;
     height: 600px;
     background-color: rgb(161, 31, 179);
 }
@@ -16,7 +17,31 @@
 #start{
     margin: auto;
     display: flex;
-    padding: 250px;
-
+    padding: 200px;
+    background-color: rgb(161, 31, 179);
+    border-style: none;
+    
 }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
 
+  #text{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-size: x-large;
+      color: whitesmoke
+  }
+
+  #text p{
+      padding-top: 65px;  
+      padding-right: 30px
+  }

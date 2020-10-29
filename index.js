@@ -51,7 +51,7 @@ function checkGameOver(){
 }
 
 function checkWin(){
-    if(progress === 3){
+    if(progress === 7){
         displayProgress();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = '50px serif';
