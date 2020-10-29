@@ -3,6 +3,7 @@
 }
 
 #canvas{
+    display:flex;
     background-color: rgb(31, 173, 230);
 }
 
@@ -11,3 +12,11 @@
     height: 600px;
     background-color: rgb(161, 31, 179);
 }
+
+#start{
+    margin: auto;
+    display: flex;
+    padding: 250px;
+
+}
+

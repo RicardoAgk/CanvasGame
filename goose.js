@@ -5,7 +5,7 @@ class Goose {
         this.vx = 0,
         this.vy = 1,
         this.userPull = 0,
-        this.radius = 100,
+        this.radius = 50,
         this.img = 'images/7-white-duck-png-image.png';
     }
 

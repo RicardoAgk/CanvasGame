@@ -16,39 +16,31 @@ class ObstacleDanger {
         ctx.drawImage(bugImg, this.x, this.y, this.width, this.height);
         let speed = Math.floor(Math.random()*10);
         if(speed > 5){
-            this.x -= 3
+            this.x -= 4
         }   
     }
-    detectOnLeft(i) {
-        let obstacleLeft = this.x - goose.radius; 
-        if (goose.x > obstacleLeft && goose.y > this.height) {
+    detectCollision(i) {
+        let obstacleLeft = this.x - goose.radius;
+        let obstacleRight = this.x + goose.radius; 
+        let obstacleHeight = this.y - this.height
+        if (goose.x > obstacleLeft && goose.x < obstacleRight && goose.y > obstacleHeight) {
             lifeCounter--;
             obstaclesDanger.splice(i, 1)
         }   
-    }
-    detectOnTop(i) {
-        let obstacleBottom = this.y - goose.radius;
-        if (goose.y > obstacleBottom &&
-            goose.x > this.x && goose.x < this.x + this.width && 
-            goose.y < this.height) {
-            lifeCounter--;
-            obstaclesDanger.splice(i, 1)    
-        }    
     } 
-}    
+}
     
 function updateObstacleDanger() {
     for(let i = 0; i < obstaclesDanger.length; i++) {
-        obstaclesDanger[i].x -= 1;
+        obstaclesDanger[i].x -= 2;
         obstaclesDanger[i].updateDanger();
-        obstaclesDanger[i].detectOnLeft(i);
-        obstaclesDanger[i].detectOnTop(i)
+        obstaclesDanger[i].detectCollision(i);
     }
 
     framesDanger+=1;
-    if (framesDanger % 200 === 0) {   
+    if (framesDanger % 150 === 0) {   
         obstaclesDanger.push(
-            new ObstacleDanger(70, 70, canvas.width, canvas.height - 70));
+            new ObstacleDanger(70, 70, canvas.width, canvas.height - 90));
     }
   }
   
