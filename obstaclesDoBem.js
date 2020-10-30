@@ -26,7 +26,6 @@ class ObstacleDoBem {
     }
     updateDoBem() {     
         changeImage();
-        
     const jsImg = new Image();
     jsImg.src = this.image;
     ctx.drawImage(jsImg, this.x, this.y, this.width, this.height);
@@ -46,13 +45,10 @@ class ObstacleDoBem {
         }
     }
 }
-
-
-
 function updateObstacleDoBem() {
     changeImage()
     for(let i = 0; i < obstaclesDoBem.length; i++) {
-        obstaclesDoBem[i].x -= 2;
+        obstaclesDoBem[i].x -= 3;
         obstaclesDoBem[i].updateDoBem();
         obstaclesDoBem[i].detectCollision(i);
     }

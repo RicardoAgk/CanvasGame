@@ -4,9 +4,12 @@ const ctx = canvas.getContext("2d");
 let gravity = 0.9;
 let interval = 0;
 canvas.style.display="none"
+let mySound;
+mySound = new Audio("FantasyChoir24bit/Fantasy Choir 1.wav");
 function update() {
     interval = requestAnimationFrame(update);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    mySound.play();
     displayLives();
     displayProgress();
     hitBottom();
@@ -52,7 +55,6 @@ function checkGameOver(){
 
 function checkWin(){
     if(progress === 7){
-        displayProgress();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = '50px serif';
         ctx.fillStyle = 'white';
@@ -62,8 +64,11 @@ function checkWin(){
         stop()  
     }
 }
-
-//let start = document.getElementById('start').addEventListener('click', startGame())
 document.getElementById('start').onclick = () => {
     startGame();
 }
+
+
+
+
+//let start = document.getElementById('start').addEventListener('click', startGame())
